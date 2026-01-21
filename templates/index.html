@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Breast Cancer Prediction System</h1>
+        <p class="subtitle">Educational Tool - Not for Medical Diagnosis</p>
+        
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label>Radius Mean</label>
+                <input type="number" step="any" name="radius" required placeholder="e.g. 14.2">
+            </div>
+            <div class="form-group">
+                <label>Texture Mean</label>
+                <input type="number" step="any" name="texture" required placeholder="e.g. 20.1">
+            </div>
+            <div class="form-group">
+                <label>Perimeter Mean</label>
+                <input type="number" step="any" name="perimeter" required placeholder="e.g. 102.5">
+            </div>
+            <div class="form-group">
+                <label>Area Mean</label>
+                <input type="number" step="any" name="area" required placeholder="e.g. 550.0">
+            </div>
+            <div class="form-group">
+                <label>Smoothness Mean</label>
+                <input type="number" step="any" name="smoothness" required placeholder="e.g. 0.09">
+            </div>
+            
+            <button type="submit" class="btn">Predict Result</button>
+        </form>
+
+        {% if prediction_text %}
+            <div class="result-box">
+                <h2 class="{{ res_class }}">{{ prediction_text }}</h2>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
